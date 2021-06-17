@@ -25,4 +25,4 @@ Backup*/
 !.vscode/extensions.json
 
 # Ignore build result
-go-binme
+go-binme*

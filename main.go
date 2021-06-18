@@ -11,12 +11,12 @@ func main() {
 	// Parse input flags.
 	config := "%08b "
 	oct := flag.Bool("o", false, "Print octal values.")
-	hex := flag.Bool("h", false, "Print hexadecimal values.")
+	hex := flag.Bool("x", false, "Print hexadecimal values.")
 	flag.Parse()
 
 	// Only one of the flags can be true
 	if *oct && *hex {
-		fmt.Fprintf(os.Stderr, "You can only choose one flag between \"-t\" and \"-o\"\n")
+		fmt.Fprintf(os.Stderr, "You can only choose one flag between \"-x\" and \"-o\"\n")
 		os.Exit(1)
 	}
 

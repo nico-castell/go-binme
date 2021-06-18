@@ -9,7 +9,7 @@ Usage:
     ```
 - To process text input into hexadecimal:
     ```shell
-    $ go-binme -h
+    $ go-binme -x
     ```
 - To process text input into octal:
     ```shell

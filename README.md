@@ -24,3 +24,5 @@ Usage:
     ```shell
     $ echo "Hello, World" | go-binme
     ```
+
+The program will print a new line after it's done, but only if the output is a terminal, not a pipe.

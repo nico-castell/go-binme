@@ -28,6 +28,11 @@ func main() {
 		config = "%02x "
 	}
 
+	// Find out if we're outputting to terminal or pipe. Based on:
+	//   https://rosettacode.org/wiki/Check_output_device_is_a_terminal#Go
+	fileInfo, _ := os.Stdout.Stat()
+	isTerminal := (fileInfo.Mode() & os.ModeCharDevice) != 0
+
 	// Process Stdin
 	reader := bufio.NewReader(os.Stdin)
 	for {
@@ -38,6 +43,10 @@ func main() {
 
 		// If the input stream reaches EOF, break
 		if err != nil {
+			if isTerminal {
+				// Print a new line in the bash prompt
+				fmt.Printf("\n")
+			}
 			break
 		}
 	}

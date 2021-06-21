@@ -26,3 +26,18 @@ Usage:
     ```
 
 The program will print a new line after it's done, but only if the output is a terminal, not a pipe.
+
+---
+To get the program run the following command:
+```shell
+go get github.com/nico-castell/go-binme
+```
+
+Alternatively, you can clone the repository and install it from there:
+```shell
+git clone https://github.com/nico-castell/go-binme.git && \
+    cd go-binme                                        && \
+    go install .
+```
+
+Either way, you'll need to [***Golang***](https://golang.org/) installed. To install it, you should follow the [official instructions](https://golang.org/doc/install).

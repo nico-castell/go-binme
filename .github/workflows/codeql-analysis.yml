@@ -1,11 +1,18 @@
 name: "CodeQL"
+# You can add a shield for this workflow to your README using this URL:
+# https://img.shields.io/github/workflow/status/user/repo/CodeQL?
 
 on:
   push:
     branches: [ main ]
+    # Don't use 'paths-ignore' or 'paths' for the 'on.push' trigger. CodeQL
+    # needs to compare with the analysis of the previous commit.
   pull_request:
     # The branches below must be a subset of the branches above
     branches: [ main ]
+    paths:
+      - 'go.mod'
+      - 'main.go'
   schedule:
     - cron: '36 10 * * 5'
 
@@ -38,9 +45,9 @@ jobs:
         # If you wish to specify custom queries, you can do so here or in a config file.
         # By default, queries listed here will override any specified in a config file.
         # Prefix the list here with "+" to use these queries and those in the config file.
-        # queries: ./path/to/local/query, your-org/your-repo/queries@main
+        # queries: +security-extended,security-and-quality
 
-    # Autobuild attempts to build any compiled languages  (C/C++, C#, or Java).
+    # Autobuild attempts to build any compiled languages  (C/C++, C#, Go, or Java).
     # If this step fails, then you should remove it and run the build manually (see below)
     - name: Autobuild
       uses: github/codeql-action/autobuild@v1.0.1

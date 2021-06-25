@@ -9,24 +9,28 @@ import (
 
 func main() {
 	// Parse input flags.
-	config := "%08b "
-	oct := flag.Bool("o", false, "Print octal values.")
-	hex := flag.Bool("x", false, "Print hexadecimal values.")
+	pOct := flag.Bool("o", false, "Print octal values.")
+	pHex := flag.Bool("x", false, "Print hexadecimal values.")
+	pDec := flag.Bool("d", false, "Print decimal values.")
 	flag.Parse()
 
+	// Prepare bitset comparison
+	var oct, hex, dec byte
+	if *pOct { oct = 1 }
+	if *pHex { hex = 1 }
+	if *pDec { dec = 1 }
+
 	// Only one of the flags can be true
-	if *oct && *hex {
+	if oct + hex + dec > 1 {
 		fmt.Fprintf(os.Stderr, "You can only choose one flag between \"-x\" and \"-o\"\n")
 		os.Exit(1)
 	}
 
 	// Configure output based on args
-	if *oct {
-		config = "%03o "
-	}
-	if *hex {
-		config = "%02x "
-	}
+	config := "%08b "
+	if *pOct { config = "%03o " }
+	if *pHex { config = "%02x " }
+	if *pDec { config = "%03d " }
 
 	// Find out if we're outputting to terminal or pipe. Based on:
 	//   https://rosettacode.org/wiki/Check_output_device_is_a_terminal#Go
@@ -35,8 +39,10 @@ func main() {
 
 	// Process Stdin
 	reader := bufio.NewReader(os.Stdin)
+	var input string
+	var err error
 	for {
-		input, err := reader.ReadString('\n')
+		input, err = reader.ReadString('\n')
 		for i := 0; i < len(input); i++ {
 			fmt.Printf(config, input[i])
 		}

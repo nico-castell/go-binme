@@ -22,7 +22,7 @@ func main() {
 
 	// Only one of the flags can be true
 	if oct + hex + dec > 1 {
-		fmt.Fprintf(os.Stderr, "You can only choose one flag between \"-x\" and \"-o\"\n")
+		fmt.Fprintf(os.Stderr, "You can only choose one flag between \"-x\", \"-o\", and \"-d\"\n")
 		os.Exit(1)
 	}
 

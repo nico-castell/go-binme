@@ -7,7 +7,7 @@
 
 I've been learning [***Golang***](https://golang.org/) for a while, I made this program to process input into binary, hexadecimal and octal.
 
-Usage:
+## Usage
 - To process text input into binary:
     ```shell
     $ go-binme
@@ -20,6 +20,10 @@ Usage:
     ```shell
     $ go-binme -o
     ```
+- To process text input into decimal:
+    ```shell
+    $ go-binme -d
+    ```
 - You can pipe the input:
     ```shell
     $ echo "Hello, World" | go-binme
@@ -27,7 +31,7 @@ Usage:
 
 The program will print a new line after it's done, but only if the output is a terminal, not a pipe.
 
----
+## Getting it
 To get the program run the following command:
 ```shell
 go get github.com/nico-castell/go-binme
@@ -41,3 +45,6 @@ git clone https://github.com/nico-castell/go-binme.git && \
 ```
 
 Either way, you'll need to [***Golang***](https://golang.org/) installed. To install it, you should follow the [official instructions](https://golang.org/doc/install).
+
+## About
+This program and this repository are available under the [Unlicense](LICENSE) license.
